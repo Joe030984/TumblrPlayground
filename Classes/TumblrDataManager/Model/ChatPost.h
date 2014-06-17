@@ -10,12 +10,14 @@
 #import <CoreData/CoreData.h>
 #import "TumblrPost.h"
 
-
 @interface ChatPost : TumblrPost
 
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * body;
 @property (nonatomic, retain) NSOrderedSet *dialogue;
+
+- (void)updateWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context fullUpdate:(BOOL)fullUpdate;
+
 @end
 
 @interface ChatPost (CoreDataGeneratedAccessors)

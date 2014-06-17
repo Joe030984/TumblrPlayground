@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "TumblrPost.h"
 
-
-@interface LinkPost : NSManagedObject
+@interface LinkPost : TumblrPost
 
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * url;
 @property (nonatomic, retain) NSString * link_description;
+
+- (void)updateWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context fullUpdate:(BOOL)fullUpdate;
 
 @end

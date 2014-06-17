@@ -13,8 +13,25 @@
 @implementation PhotoPost
 
 @dynamic caption;
-@dynamic width;
-@dynamic height;
 @dynamic photos;
+
+- (void)updateWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context fullUpdate:(BOOL)fullUpdate
+{
+    [super updateWithDictionary:dictionary inContext:context fullUpdate:fullUpdate];
+    
+    if (dictionary[@"caption"] != nil)
+    {
+        self.caption = dictionary[@"caption"];
+    }
+    else if (fullUpdate)
+    {
+        self.caption = nil;
+    }
+    
+    for (NSDictionary *photo in dictionary[@"photos"])
+    {
+        // Create photo object with the photo
+    }
+}
 
 @end

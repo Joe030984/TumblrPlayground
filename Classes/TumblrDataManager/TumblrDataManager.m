@@ -8,6 +8,7 @@
 
 #import "TumblrDataManager.h"
 #import "TMAPIClient.h"
+#import "TumblrPost.h"
 
 @implementation TumblrDataManager
 {
@@ -72,13 +73,62 @@
 
 + (void)loadTumblrForName:(NSString *)blogName more:(BOOL)more
 {
-    TumblrDataManager *manager = [TumblrDataManager sharedInstance];
-    @synchronized(manager)
-    {
+    [[TumblrDataManager privateManagedObjectContext] performBlock:^(void) {
         [[TMAPIClient sharedInstance] posts:blogName type:nil parameters:nil callback:^(NSDictionary *result, NSError *error) {
-            NSLog(@"JRS got blog info: %@\nerror: %@", result, error);
+            if (error)
+            {
+                NSLog(@"An error occurred fetching %@: (%ld) %@",
+                      blogName, (long)error.code, error.localizedDescription);
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                message:@"An error occurred fetching the blog"
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
+                return;
+            }
+            
+            NSManagedObjectContext *context = [TumblrDataManager privateManagedObjectContext];
+            NSError *coreDataError = nil;
+
+            // Pull out the blog name of this blog
+            NSString *blogName = result[@"blog"][@"name"];
+            
+            // Gather a set of all post IDs to use for duplicate matching
+            NSMutableDictionary *identifiers = [[NSMutableDictionary alloc] init];
+            for (NSDictionary *post in result[@"posts"])
+            {
+                identifiers[post[@"id"]] = post;
+            }
+            
+            // Find all TumblrPosts that are both in the database and in the API response. These should be updated
+            // directly rather than created so that there are no duplicates.
+            NSFetchRequest *updateRequest = [NSFetchRequest fetchRequestWithEntityName:@"TumblrPost"];
+            updateRequest.predicate = [NSPredicate predicateWithFormat:@"(blog_name == %@) AND (identifier IN %@)",
+                                       blogName, [identifiers allKeys]];
+            coreDataError = nil;
+            NSArray *items = [context executeFetchRequest:updateRequest error:&coreDataError];
+            if (coreDataError != nil)
+            {
+                NSLog(@"An error occurred attempting to fetch TumblrPosts to update: (%ld) %@",
+                      (long)coreDataError.code, coreDataError.localizedDescription);
+            }
+            
+            // Update all matching TumblrPosts directly.
+            for (TumblrPost *item in items)
+            {
+                NSDictionary *updateDict = [identifiers objectForKey:item.identifier];
+                [item updateWithDictionary:updateDict inContext:context fullUpdate:YES];
+            }
+            
+            // For any TumblrPosts left, we need to create new objects and store them in the database
+            for (NSDictionary *post in [identifiers allValues])
+            {
+                // Creating the object also adds it to the database
+//                [TumblrPost updatedTumblrPostWithDictionary:post inContext:context fullUpdate:YES];
+            }
         }];
-    }
+    }];
 }
 
 #pragma mark - Private Class Methods

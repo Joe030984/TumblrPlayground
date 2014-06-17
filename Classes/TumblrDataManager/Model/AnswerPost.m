@@ -16,4 +16,9 @@
 @dynamic question;
 @dynamic answer;
 
+- (void)updateWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context fullUpdate:(BOOL)fullUpdate
+{
+    [super updateWithDictionary:dictionary inContext:context fullUpdate:fullUpdate];
+}
+
 @end

@@ -22,8 +22,6 @@
     </entity>
     <entity name="PhotoPost" representedClassName="PhotoPost" parentEntity="TumblrPost" syncable="YES">
         <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="height" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="width" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TumblrPhoto" inverseName="photo_post" inverseEntity="TumblrPhoto" syncable="YES"/>
     </entity>
     <entity name="QuotePost" representedClassName="QuotePost" parentEntity="TumblrPost" syncable="YES">
@@ -53,23 +51,23 @@
         <attribute name="source_title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="source_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="total_posts" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="VideoPost" representedClassName="VideoPost" parentEntity="TumblrPost" syncable="YES">
         <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="player" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="TumblrPost" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="TextPost" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="PhotoPost" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="TumblrPhoto" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="QuotePost" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="LinkPost" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="ChatPost" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="TumblrDialogue" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="AudioPost" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="VideoPost" positionX="0" positionY="0" width="0" height="0"/>
         <element name="AnswerPost" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="AudioPost" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ChatPost" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="LinkPost" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="PhotoPost" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="QuotePost" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TextPost" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TumblrDialogue" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TumblrPhoto" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TumblrPost" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="VideoPost" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

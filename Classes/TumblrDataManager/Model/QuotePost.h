@@ -10,10 +10,11 @@
 #import <CoreData/CoreData.h>
 #import "TumblrPost.h"
 
-
 @interface QuotePost : TumblrPost
 
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSString * source;
+
+- (void)updateWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context fullUpdate:(BOOL)fullUpdate;
 
 @end

@@ -15,9 +15,10 @@
 @interface PhotoPost : TumblrPost
 
 @property (nonatomic, retain) NSString * caption;
-@property (nonatomic, retain) NSNumber * width;
-@property (nonatomic, retain) NSNumber * height;
 @property (nonatomic, retain) NSSet *photos;
+
+- (void)updateWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context fullUpdate:(BOOL)fullUpdate;
+
 @end
 
 @interface PhotoPost (CoreDataGeneratedAccessors)

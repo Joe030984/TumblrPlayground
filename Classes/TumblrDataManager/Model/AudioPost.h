@@ -10,10 +10,11 @@
 #import <CoreData/CoreData.h>
 #import "TumblrPost.h"
 
-
 @interface AudioPost : TumblrPost
 
 @property (nonatomic, retain) NSString * caption;
 @property (nonatomic, retain) NSString * player;
+
+- (void)updateWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context fullUpdate:(BOOL)fullUpdate;
 
 @end
