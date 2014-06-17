@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="AnswerPost" representedClassName="AnswerPost" parentEntity="TumblrPost" syncable="YES">
+        <attribute name="answer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asking_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="asking_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="question" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="AudioPost" representedClassName="AudioPost" parentEntity="TumblrPost" syncable="YES">
+        <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="player" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ChatPost" representedClassName="ChatPost" parentEntity="TumblrPost" syncable="YES">
+        <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="dialogue" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="TumblrDialogue" inverseName="chat_post" inverseEntity="TumblrDialogue" syncable="YES"/>
+    </entity>
+    <entity name="LinkPost" representedClassName="LinkPost" parentEntity="TumblrPost" syncable="YES">
+        <attribute name="link_description" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="PhotoPost" representedClassName="PhotoPost" parentEntity="TumblrPost" syncable="YES">
+        <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="width" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TumblrPhoto" inverseName="photo_post" inverseEntity="TumblrPhoto" syncable="YES"/>
+    </entity>
+    <entity name="QuotePost" representedClassName="QuotePost" parentEntity="TumblrPost" syncable="YES">
+        <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TextPost" representedClassName="TextPost" parentEntity="TumblrPost" syncable="YES">
+        <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TumblrDialogue" representedClassName="TumblrDialogue" syncable="YES">
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phrase" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="chat_post" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChatPost" inverseName="dialogue" inverseEntity="ChatPost" syncable="YES"/>
+    </entity>
+    <entity name="TumblrPhoto" representedClassName="TumblrPhoto" syncable="YES">
+        <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="width" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="photo_post" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhotoPost" inverseName="photos" inverseEntity="PhotoPost" syncable="YES"/>
+    </entity>
+    <entity name="TumblrPost" representedClassName="TumblrPost" syncable="YES">
+        <attribute name="blog_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="source_title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="source_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="total_posts" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="VideoPost" representedClassName="VideoPost" parentEntity="TumblrPost" syncable="YES">
+        <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="player" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TumblrPost" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TextPost" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="PhotoPost" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TumblrPhoto" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="QuotePost" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="LinkPost" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ChatPost" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TumblrDialogue" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="AudioPost" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="VideoPost" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="AnswerPost" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>
