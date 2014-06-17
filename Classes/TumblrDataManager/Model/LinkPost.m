@@ -18,6 +18,33 @@
 - (void)updateWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context fullUpdate:(BOOL)fullUpdate
 {
     [super updateWithDictionary:dictionary inContext:context fullUpdate:fullUpdate];
+    
+    if (dictionary[@"title"] != nil)
+    {
+        self.title = dictionary[@"title"];
+    }
+    else if (fullUpdate)
+    {
+        self.title = nil;
+    }
+    
+    if (dictionary[@"url"] != nil)
+    {
+        self.url = dictionary[@"url"];
+    }
+    else if (fullUpdate)
+    {
+        self.url = nil;
+    }
+    
+    if (dictionary[@"link_description"] != nil)
+    {
+        self.link_description = dictionary[@"link_description"];
+    }
+    else if (fullUpdate)
+    {
+        self.link_description = nil;
+    }
 }
 
 @end

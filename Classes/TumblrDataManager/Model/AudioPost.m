@@ -17,6 +17,15 @@
 - (void)updateWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context fullUpdate:(BOOL)fullUpdate
 {
     [super updateWithDictionary:dictionary inContext:context fullUpdate:fullUpdate];
+    
+    if (dictionary[@"caption"] != nil)
+    {
+        self.caption = dictionary[@"caption"];
+    }
+    else if (fullUpdate)
+    {
+        self.caption = nil;
+    }
 }
 
 @end
