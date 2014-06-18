@@ -15,7 +15,16 @@
 {
     [super viewDidLoad];
     
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"Load" style:UIBarButtonItemStylePlain target:self action:@selector(loadBlog)];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithTitle:@"Delete"
+                                                                  style:UIBarButtonItemStylePlain
+                                                                 target:[TumblrDataManager class]
+                                                                 action:@selector(deleteAllTumblrPosts)];
+    self.navigationItem.leftBarButtonItem = leftItem;
+    
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"Load"
+                                                                  style:UIBarButtonItemStylePlain
+                                                                 target:self
+                                                                 action:@selector(loadBlog)];
     self.navigationItem.rightBarButtonItem = rightItem;
 }
 

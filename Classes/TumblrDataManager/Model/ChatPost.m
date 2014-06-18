@@ -19,7 +19,7 @@
 {
     [super updateWithDictionary:dictionary inContext:context fullUpdate:fullUpdate];
     
-    if (dictionary[@"title"] != nil)
+    if (dictionary[@"title"] != nil && dictionary[@"title"] != [NSNull null])
     {
         self.title = dictionary[@"title"];
     }
@@ -28,7 +28,7 @@
         self.title = nil;
     }
     
-    if (dictionary[@"body"] != nil)
+    if (dictionary[@"body"] != nil && dictionary[@"body"] != [NSNull null])
     {
         self.body = dictionary[@"body"];
     }

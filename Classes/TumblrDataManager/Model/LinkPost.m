@@ -19,7 +19,7 @@
 {
     [super updateWithDictionary:dictionary inContext:context fullUpdate:fullUpdate];
     
-    if (dictionary[@"title"] != nil)
+    if (dictionary[@"title"] != nil && dictionary[@"title"] != [NSNull null])
     {
         self.title = dictionary[@"title"];
     }
@@ -28,7 +28,7 @@
         self.title = nil;
     }
     
-    if (dictionary[@"url"] != nil)
+    if (dictionary[@"url"] != nil && dictionary[@"url"] != [NSNull null])
     {
         self.url = dictionary[@"url"];
     }
@@ -37,7 +37,7 @@
         self.url = nil;
     }
     
-    if (dictionary[@"link_description"] != nil)
+    if (dictionary[@"link_description"] != nil && dictionary[@"link_description"] != [NSNull null])
     {
         self.link_description = dictionary[@"link_description"];
     }

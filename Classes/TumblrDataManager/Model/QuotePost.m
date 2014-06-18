@@ -18,7 +18,7 @@
 {
     [super updateWithDictionary:dictionary inContext:context fullUpdate:fullUpdate];
     
-    if (dictionary[@"text"] != nil)
+    if (dictionary[@"text"] != nil && dictionary[@"text"] != [NSNull null])
     {
         self.text = dictionary[@"text"];
     }
@@ -27,7 +27,7 @@
         self.text = nil;
     }
     
-    if (dictionary[@"source"] != nil)
+    if (dictionary[@"source"] != nil && dictionary[@"source"] != [NSNull null])
     {
         self.source = dictionary[@"source"];
     }

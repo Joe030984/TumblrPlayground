@@ -90,22 +90,23 @@
             
             NSManagedObjectContext *context = [TumblrDataManager privateManagedObjectContext];
             NSError *coreDataError = nil;
-
-            // Pull out the blog name of this blog
-            NSString *blogName = result[@"blog"][@"name"];
             
             // Gather a set of all post IDs to use for duplicate matching
             NSMutableDictionary *identifiers = [[NSMutableDictionary alloc] init];
             for (NSDictionary *post in result[@"posts"])
             {
-                identifiers[post[@"id"]] = post;
+                if (post[@"id"] == nil || post[@"id"] == [NSNull null])
+                {
+                    continue;
+                }
+                NSString *identifier = [NSString stringWithFormat:@"%@", post[@"id"]];
+                identifiers[identifier] = post;
             }
             
             // Find all TumblrPosts that are both in the database and in the API response. These should be updated
             // directly rather than created so that there are no duplicates.
             NSFetchRequest *updateRequest = [NSFetchRequest fetchRequestWithEntityName:@"TumblrPost"];
-            updateRequest.predicate = [NSPredicate predicateWithFormat:@"(blog_name == %@) AND (identifier IN %@)",
-                                       blogName, [identifiers allKeys]];
+            updateRequest.predicate = [NSPredicate predicateWithFormat:@"(identifier IN %@)", [identifiers allKeys]];
             coreDataError = nil;
             NSArray *items = [context executeFetchRequest:updateRequest error:&coreDataError];
             if (coreDataError != nil)
@@ -119,15 +120,52 @@
             {
                 NSDictionary *updateDict = [identifiers objectForKey:item.identifier];
                 [item updateWithDictionary:updateDict inContext:context fullUpdate:YES];
+                // Delete the API data about that TumblrPost from the caches so that no duplicates are created
+                [identifiers removeObjectForKey:item.identifier];
             }
             
             // For any TumblrPosts left, we need to create new objects and store them in the database
             for (NSDictionary *post in [identifiers allValues])
             {
                 // Creating the object also adds it to the database
-//                [TumblrPost updatedTumblrPostWithDictionary:post inContext:context fullUpdate:YES];
+                TumblrPost *newPost = [TumblrPost updatedTumblrPostWithDictionary:post inContext:context fullUpdate:YES];
+                NSLog(@"JRS - created post (%@) of type %@", newPost.identifier, newPost.type);
+            }
+            
+            error = nil;
+            [context save:&error];
+            if (error != nil)
+            {
+                NSLog(@"An error occurred attempting to save TumblrPosts: (%ld) %@",
+                      (long)error.code, error.localizedDescription);
             }
         }];
+    }];
+}
+
++ (void)deleteAllTumblrPosts
+{
+    [[TumblrDataManager privateManagedObjectContext] performBlock:^(void) {
+        NSFetchRequest *deleteRequest = [NSFetchRequest fetchRequestWithEntityName:@"TumblrPost"];
+        deleteRequest.includesPropertyValues = NO; // Only fetch the NSManagedObjectIDs
+        NSError *error = nil;
+        NSArray *items = [[TumblrDataManager privateManagedObjectContext] executeFetchRequest:deleteRequest error:&error];
+        if (error != nil)
+        {
+            NSLog(@"An error occurred attempting to fetch TunblrPosts to delete: (%ld) %@",
+                  (long)error.code, error.localizedDescription);
+        }
+        for (NSManagedObject *object in items)
+        {
+            [[TumblrDataManager privateManagedObjectContext] deleteObject:object];
+        }
+        error = nil;
+        [[TumblrDataManager privateManagedObjectContext] save:&error];
+        if (error != nil)
+        {
+            NSLog(@"An error occurred attempting to delete TumblrPosts: (%ld) %@",
+                  (long)error.code, error.localizedDescription);
+        }
     }];
 }
 

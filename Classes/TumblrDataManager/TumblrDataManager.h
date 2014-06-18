@@ -28,4 +28,7 @@
 //! Method to load a given Tumblr blog
 + (void)loadTumblrForName:(NSString *)blogName more:(BOOL)more;
 
+//! Method to delete all TumblrPosts
++ (void)deleteAllTumblrPosts;
+
 @end

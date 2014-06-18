@@ -20,7 +20,7 @@
 {
     [super updateWithDictionary:dictionary inContext:context fullUpdate:fullUpdate];
     
-    if (dictionary[@"asking_name"] != nil)
+    if (dictionary[@"asking_name"] != nil && dictionary[@"asking_name"] != [NSNull null])
     {
         self.asking_name = dictionary[@"asking_name"];
     }
@@ -29,7 +29,7 @@
         self.asking_name = nil;
     }
     
-    if (dictionary[@"asking_url"] != nil)
+    if (dictionary[@"asking_url"] != nil && dictionary[@"asking_url"] != [NSNull null])
     {
         self.asking_url = dictionary[@"asking_url"];
     }
@@ -38,7 +38,7 @@
         self.asking_url = nil;
     }
     
-    if (dictionary[@"question"] != nil)
+    if (dictionary[@"question"] != nil && dictionary[@"question"] != [NSNull null])
     {
         self.question = dictionary[@"question"];
     }
@@ -47,7 +47,7 @@
         self.question = nil;
     }
     
-    if (dictionary[@"answer"] != nil)
+    if (dictionary[@"answer"] != nil && dictionary[@"answer"] != [NSNull null])
     {
         self.answer = dictionary[@"answer"];
     }

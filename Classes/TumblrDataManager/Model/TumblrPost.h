@@ -12,11 +12,15 @@
 @interface TumblrPost : NSManagedObject
 
 @property (nonatomic, retain) NSString * blog_name;
-@property (nonatomic, retain) NSNumber * identifier;
+@property (nonatomic, retain) NSString * identifier;
 @property (nonatomic, retain) NSNumber * timestamp;
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSString * source_url;
 @property (nonatomic, retain) NSString * source_title;
+
++ (NSString *)subclassEntityNameForType:(NSString *)type;
+
++ (TumblrPost *)updatedTumblrPostWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context fullUpdate:(BOOL)fullUpdate;
 
 - (void)updateWithDictionary:(NSDictionary *)dictionary inContext:(NSManagedObjectContext *)context fullUpdate:(BOOL)fullUpdate;
 

@@ -18,7 +18,7 @@
 {
     [super updateWithDictionary:dictionary inContext:context fullUpdate:fullUpdate];
     
-    if (dictionary[@"caption"] != nil)
+    if (dictionary[@"caption"] != nil && dictionary[@"answer"] != [NSNull null])
     {
         self.caption = dictionary[@"caption"];
     }
@@ -27,7 +27,7 @@
         self.caption = nil;
     }
     
-    if (dictionary[@"player"] != nil && [dictionary[@"player"] count] > 0)
+    if (dictionary[@"player"] != nil && dictionary[@"player"] != [NSNull null] && [dictionary[@"player"] count] > 0)
     {
         self.player = [dictionary[@"player"] lastObject][@"embed_code"];
     }

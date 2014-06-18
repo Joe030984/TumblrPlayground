@@ -18,7 +18,7 @@
 {
     [super updateWithDictionary:dictionary inContext:context fullUpdate:fullUpdate];
     
-    if (dictionary[@"caption"] != nil)
+    if (dictionary[@"caption"] != nil && dictionary[@"caption"] != [NSNull null])
     {
         self.caption = dictionary[@"caption"];
     }
@@ -26,6 +26,8 @@
     {
         self.caption = nil;
     }
+    
+    // TODO: Add player
 }
 
 @end
