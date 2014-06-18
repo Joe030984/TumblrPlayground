@@ -128,8 +128,7 @@
             for (NSDictionary *post in [identifiers allValues])
             {
                 // Creating the object also adds it to the database
-                TumblrPost *newPost = [TumblrPost updatedTumblrPostWithDictionary:post inContext:context fullUpdate:YES];
-                NSLog(@"JRS - created post (%@) of type %@", newPost.identifier, newPost.type);
+                [TumblrPost updatedTumblrPostWithDictionary:post inContext:context fullUpdate:YES];
             }
             
             error = nil;

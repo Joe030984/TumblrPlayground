@@ -8,14 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3B05A82B194FBB71000A340B /* TumblrDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B05A82A194FBB71000A340B /* TumblrDataManager.m */; };
-		3B05A84D194FC65F000A340B /* TumblrPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B05A84C194FC65F000A340B /* TumblrPhoto.m */; };
 		3B05A850194FC65F000A340B /* TextPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B05A84F194FC65F000A340B /* TextPost.m */; };
 		3B05A853194FC65F000A340B /* AnswerPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B05A852194FC65F000A340B /* AnswerPost.m */; };
 		3B05A856194FC65F000A340B /* LinkPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B05A855194FC65F000A340B /* LinkPost.m */; };
 		3B05A859194FC65F000A340B /* TumblrPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B05A858194FC65F000A340B /* TumblrPost.m */; };
-		3B05A85C194FC65F000A340B /* ChatPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B05A85B194FC65F000A340B /* ChatPost.m */; };
-		3B05A85F194FC65F000A340B /* PhotoPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B05A85E194FC65F000A340B /* PhotoPost.m */; };
-		3B05A862194FC660000A340B /* TumblrDialogue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B05A861194FC660000A340B /* TumblrDialogue.m */; };
 		3B05A865194FC660000A340B /* AudioPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B05A864194FC660000A340B /* AudioPost.m */; };
 		3B05A868194FC660000A340B /* QuotePost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B05A867194FC660000A340B /* QuotePost.m */; };
 		3B05A86B194FC660000A340B /* VideoPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B05A86A194FC660000A340B /* VideoPost.m */; };
@@ -31,6 +27,10 @@
 		3B387287194F58440092A053 /* JRSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B387284194F58440092A053 /* JRSAppDelegate.m */; };
 		3B387288194F58440092A053 /* JRSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B387286194F58440092A053 /* JRSViewController.m */; };
 		3B38728C194F584E0092A053 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B38728A194F584E0092A053 /* main.m */; };
+		3B49F23E195116DA009B6A29 /* TumblrPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B49F23D195116DA009B6A29 /* TumblrPhoto.m */; };
+		3B49F241195116DB009B6A29 /* ChatPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B49F240195116DB009B6A29 /* ChatPost.m */; };
+		3B49F244195116DB009B6A29 /* PhotoPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B49F243195116DB009B6A29 /* PhotoPost.m */; };
+		3B49F247195116DB009B6A29 /* TumblrDialogue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B49F246195116DB009B6A29 /* TumblrDialogue.m */; };
 		3B6F2339194FC69900E6EA5F /* TumblrPlayground.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B6F2337194FC69900E6EA5F /* TumblrPlayground.xcdatamodeld */; };
 		D8E64F52D4D74F51ABDFFCE1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0ED2ED1D358441498676054 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -48,8 +48,6 @@
 /* Begin PBXFileReference section */
 		3B05A829194FBB71000A340B /* TumblrDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TumblrDataManager.h; path = Classes/TumblrDataManager/TumblrDataManager.h; sourceTree = "<group>"; };
 		3B05A82A194FBB71000A340B /* TumblrDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TumblrDataManager.m; path = Classes/TumblrDataManager/TumblrDataManager.m; sourceTree = "<group>"; };
-		3B05A84B194FC65F000A340B /* TumblrPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TumblrPhoto.h; path = Classes/TumblrDataManager/Model/TumblrPhoto.h; sourceTree = "<group>"; };
-		3B05A84C194FC65F000A340B /* TumblrPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TumblrPhoto.m; path = Classes/TumblrDataManager/Model/TumblrPhoto.m; sourceTree = "<group>"; };
 		3B05A84E194FC65F000A340B /* TextPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextPost.h; path = Classes/TumblrDataManager/Model/TextPost.h; sourceTree = "<group>"; };
 		3B05A84F194FC65F000A340B /* TextPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextPost.m; path = Classes/TumblrDataManager/Model/TextPost.m; sourceTree = "<group>"; };
 		3B05A851194FC65F000A340B /* AnswerPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnswerPost.h; path = Classes/TumblrDataManager/Model/AnswerPost.h; sourceTree = "<group>"; };
@@ -58,12 +56,6 @@
 		3B05A855194FC65F000A340B /* LinkPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LinkPost.m; path = Classes/TumblrDataManager/Model/LinkPost.m; sourceTree = "<group>"; };
 		3B05A857194FC65F000A340B /* TumblrPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TumblrPost.h; path = Classes/TumblrDataManager/Model/TumblrPost.h; sourceTree = "<group>"; };
 		3B05A858194FC65F000A340B /* TumblrPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TumblrPost.m; path = Classes/TumblrDataManager/Model/TumblrPost.m; sourceTree = "<group>"; };
-		3B05A85A194FC65F000A340B /* ChatPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChatPost.h; path = Classes/TumblrDataManager/Model/ChatPost.h; sourceTree = "<group>"; };
-		3B05A85B194FC65F000A340B /* ChatPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChatPost.m; path = Classes/TumblrDataManager/Model/ChatPost.m; sourceTree = "<group>"; };
-		3B05A85D194FC65F000A340B /* PhotoPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoPost.h; path = Classes/TumblrDataManager/Model/PhotoPost.h; sourceTree = "<group>"; };
-		3B05A85E194FC65F000A340B /* PhotoPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoPost.m; path = Classes/TumblrDataManager/Model/PhotoPost.m; sourceTree = "<group>"; };
-		3B05A860194FC65F000A340B /* TumblrDialogue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TumblrDialogue.h; path = Classes/TumblrDataManager/Model/TumblrDialogue.h; sourceTree = "<group>"; };
-		3B05A861194FC660000A340B /* TumblrDialogue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TumblrDialogue.m; path = Classes/TumblrDataManager/Model/TumblrDialogue.m; sourceTree = "<group>"; };
 		3B05A863194FC660000A340B /* AudioPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioPost.h; path = Classes/TumblrDataManager/Model/AudioPost.h; sourceTree = "<group>"; };
 		3B05A864194FC660000A340B /* AudioPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioPost.m; path = Classes/TumblrDataManager/Model/AudioPost.m; sourceTree = "<group>"; };
 		3B05A866194FC660000A340B /* QuotePost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuotePost.h; path = Classes/TumblrDataManager/Model/QuotePost.h; sourceTree = "<group>"; };
@@ -87,6 +79,14 @@
 		3B387286194F58440092A053 /* JRSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JRSViewController.m; path = Classes/JRSViewController.m; sourceTree = "<group>"; };
 		3B38728A194F584E0092A053 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Classes/Other Sources/main.m"; sourceTree = "<group>"; };
 		3B38728B194F584E0092A053 /* TumblrPlayground-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TumblrPlayground-Prefix.pch"; path = "Classes/Other Sources/TumblrPlayground-Prefix.pch"; sourceTree = "<group>"; };
+		3B49F23C195116DA009B6A29 /* TumblrPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TumblrPhoto.h; path = Classes/TumblrDataManager/Model/TumblrPhoto.h; sourceTree = "<group>"; };
+		3B49F23D195116DA009B6A29 /* TumblrPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TumblrPhoto.m; path = Classes/TumblrDataManager/Model/TumblrPhoto.m; sourceTree = "<group>"; };
+		3B49F23F195116DB009B6A29 /* ChatPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChatPost.h; path = Classes/TumblrDataManager/Model/ChatPost.h; sourceTree = "<group>"; };
+		3B49F240195116DB009B6A29 /* ChatPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChatPost.m; path = Classes/TumblrDataManager/Model/ChatPost.m; sourceTree = "<group>"; };
+		3B49F242195116DB009B6A29 /* PhotoPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoPost.h; path = Classes/TumblrDataManager/Model/PhotoPost.h; sourceTree = "<group>"; };
+		3B49F243195116DB009B6A29 /* PhotoPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoPost.m; path = Classes/TumblrDataManager/Model/PhotoPost.m; sourceTree = "<group>"; };
+		3B49F245195116DB009B6A29 /* TumblrDialogue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TumblrDialogue.h; path = Classes/TumblrDataManager/Model/TumblrDialogue.h; sourceTree = "<group>"; };
+		3B49F246195116DB009B6A29 /* TumblrDialogue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TumblrDialogue.m; path = Classes/TumblrDataManager/Model/TumblrDialogue.m; sourceTree = "<group>"; };
 		3B6F2338194FC69900E6EA5F /* TumblrPlayground.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TumblrPlayground.xcdatamodel; sourceTree = "<group>"; };
 		A0ED2ED1D358441498676054 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD31721E0B2247A5AFFD55E4 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -134,20 +134,20 @@
 				3B05A852194FC65F000A340B /* AnswerPost.m */,
 				3B05A863194FC660000A340B /* AudioPost.h */,
 				3B05A864194FC660000A340B /* AudioPost.m */,
-				3B05A85A194FC65F000A340B /* ChatPost.h */,
-				3B05A85B194FC65F000A340B /* ChatPost.m */,
+				3B49F23F195116DB009B6A29 /* ChatPost.h */,
+				3B49F240195116DB009B6A29 /* ChatPost.m */,
 				3B05A854194FC65F000A340B /* LinkPost.h */,
 				3B05A855194FC65F000A340B /* LinkPost.m */,
-				3B05A85D194FC65F000A340B /* PhotoPost.h */,
-				3B05A85E194FC65F000A340B /* PhotoPost.m */,
+				3B49F242195116DB009B6A29 /* PhotoPost.h */,
+				3B49F243195116DB009B6A29 /* PhotoPost.m */,
 				3B05A866194FC660000A340B /* QuotePost.h */,
 				3B05A867194FC660000A340B /* QuotePost.m */,
 				3B05A84E194FC65F000A340B /* TextPost.h */,
 				3B05A84F194FC65F000A340B /* TextPost.m */,
-				3B05A860194FC65F000A340B /* TumblrDialogue.h */,
-				3B05A861194FC660000A340B /* TumblrDialogue.m */,
-				3B05A84B194FC65F000A340B /* TumblrPhoto.h */,
-				3B05A84C194FC65F000A340B /* TumblrPhoto.m */,
+				3B49F245195116DB009B6A29 /* TumblrDialogue.h */,
+				3B49F246195116DB009B6A29 /* TumblrDialogue.m */,
+				3B49F23C195116DA009B6A29 /* TumblrPhoto.h */,
+				3B49F23D195116DA009B6A29 /* TumblrPhoto.m */,
 				3B6F2337194FC69900E6EA5F /* TumblrPlayground.xcdatamodeld */,
 				3B05A857194FC65F000A340B /* TumblrPost.h */,
 				3B05A858194FC65F000A340B /* TumblrPost.m */,
@@ -374,20 +374,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B6F2339194FC69900E6EA5F /* TumblrPlayground.xcdatamodeld in Sources */,
-				3B05A85C194FC65F000A340B /* ChatPost.m in Sources */,
 				3B05A868194FC660000A340B /* QuotePost.m in Sources */,
 				3B387288194F58440092A053 /* JRSViewController.m in Sources */,
 				3B05A86B194FC660000A340B /* VideoPost.m in Sources */,
 				3B05A865194FC660000A340B /* AudioPost.m in Sources */,
 				3B05A859194FC65F000A340B /* TumblrPost.m in Sources */,
+				3B49F244195116DB009B6A29 /* PhotoPost.m in Sources */,
+				3B49F23E195116DA009B6A29 /* TumblrPhoto.m in Sources */,
 				3B05A82B194FBB71000A340B /* TumblrDataManager.m in Sources */,
 				3B05A850194FC65F000A340B /* TextPost.m in Sources */,
-				3B05A85F194FC65F000A340B /* PhotoPost.m in Sources */,
 				3B38728C194F584E0092A053 /* main.m in Sources */,
+				3B49F247195116DB009B6A29 /* TumblrDialogue.m in Sources */,
+				3B49F241195116DB009B6A29 /* ChatPost.m in Sources */,
 				3B05A853194FC65F000A340B /* AnswerPost.m in Sources */,
-				3B05A84D194FC65F000A340B /* TumblrPhoto.m in Sources */,
 				3B05A856194FC65F000A340B /* LinkPost.m in Sources */,
-				3B05A862194FC660000A340B /* TumblrDialogue.m in Sources */,
 				3B387287194F58440092A053 /* JRSAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

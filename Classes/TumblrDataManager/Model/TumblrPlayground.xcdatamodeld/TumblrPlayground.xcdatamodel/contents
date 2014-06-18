@@ -13,7 +13,7 @@
     <entity name="ChatPost" representedClassName="ChatPost" parentEntity="TumblrPost" syncable="YES">
         <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="dialogue" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="TumblrDialogue" inverseName="chat_post" inverseEntity="TumblrDialogue" syncable="YES"/>
+        <relationship name="dialogue" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TumblrDialogue" inverseName="chat_post" inverseEntity="TumblrDialogue" syncable="YES"/>
     </entity>
     <entity name="LinkPost" representedClassName="LinkPost" parentEntity="TumblrPost" syncable="YES">
         <attribute name="link_description" optional="YES" attributeType="String" syncable="YES"/>
@@ -33,6 +33,7 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="TumblrDialogue" representedClassName="TumblrDialogue" syncable="YES">
+        <attribute name="index" optional="YES" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phrase" optional="YES" attributeType="String" syncable="YES"/>
@@ -41,6 +42,7 @@
     <entity name="TumblrPhoto" representedClassName="TumblrPhoto" syncable="YES">
         <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="height" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 32" minValueString="0" defaultValueString="0" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="width" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="photo_post" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhotoPost" inverseName="photos" inverseEntity="PhotoPost" syncable="YES"/>

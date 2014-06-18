@@ -27,7 +27,14 @@
         self.caption = nil;
     }
     
-    // TODO: Add player
+    if (dictionary[@"player"] != nil && dictionary[@"player"] != [NSNull null])
+    {
+        self.player = dictionary[@"player"];
+    }
+    else if (fullUpdate)
+    {
+        self.player = nil;
+    }
 }
 
 @end
