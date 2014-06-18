@@ -10,6 +10,8 @@
 #import "TMAPIClient.h"
 #import "TumblrPost.h"
 
+NSString * const BlogNameUpdateNotification = @"BlogNameUpdateNotification";
+
 @implementation TumblrDataManager
 {
     // Core Data instance variables
@@ -71,10 +73,13 @@
 
 #pragma mark - API Interaction Methods
 
-+ (void)loadTumblrForName:(NSString *)blogName more:(BOOL)more
++ (void)loadTumblrForName:(NSString *)blogName page:(int)page
 {
     [[TumblrDataManager privateManagedObjectContext] performBlock:^(void) {
-        [[TMAPIClient sharedInstance] posts:blogName type:nil parameters:nil callback:^(NSDictionary *result, NSError *error) {
+        [[TMAPIClient sharedInstance] posts:blogName
+                                       type:nil
+                                 parameters:@{@"offset" : @(page)}
+                                   callback:^(NSDictionary *result, NSError *error) {
             if (error)
             {
                 NSLog(@"An error occurred fetching %@: (%ld) %@",
@@ -90,6 +95,11 @@
             
             NSManagedObjectContext *context = [TumblrDataManager privateManagedObjectContext];
             NSError *coreDataError = nil;
+                                       
+            [[NSNotificationCenter defaultCenter] postNotificationName:BlogNameUpdateNotification
+                                                                object:[TumblrDataManager class]
+                                                              userInfo:@{@"providedName" : blogName,
+                                                                         @"officialName" : result[@"blog"][@"name"]}];
             
             // Gather a set of all post IDs to use for duplicate matching
             NSMutableDictionary *identifiers = [[NSMutableDictionary alloc] init];
@@ -140,6 +150,22 @@
             }
         }];
     }];
+}
+
++ (NSFetchedResultsController *)tumblrPostFetchedResultsControllerForBlog:(NSString *)blog
+{
+    // Create a fetch request for all Conversations that are for the currently logged in member, sorted
+    // by timestamp.
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"TumblrPost"];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"(blog_name == %@)", blog];
+    fetchRequest.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO]];
+    fetchRequest.fetchBatchSize = 50;
+    
+    // Return an NSFetchedResultsController using the defined fetch request
+    return [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                               managedObjectContext:[TumblrDataManager mainManagedObjectContext]
+                                                 sectionNameKeyPath:nil
+                                                          cacheName:nil];
 }
 
 + (void)deleteAllTumblrPosts

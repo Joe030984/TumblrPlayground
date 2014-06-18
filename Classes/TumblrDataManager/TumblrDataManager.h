@@ -8,6 +8,8 @@
 
 #import <CoreData/CoreData.h>
 
+extern NSString * const BlogNameUpdateNotification;
+
 @interface TumblrDataManager : NSObject
 
 /**
@@ -26,7 +28,9 @@
 #pragma mark - API Interaction Methods
 
 //! Method to load a given Tumblr blog
-+ (void)loadTumblrForName:(NSString *)blogName more:(BOOL)more;
++ (void)loadTumblrForName:(NSString *)blogName page:(int)page;
+
++ (NSFetchedResultsController *)tumblrPostFetchedResultsControllerForBlog:(NSString *)blog;
 
 //! Method to delete all TumblrPosts
 + (void)deleteAllTumblrPosts;
