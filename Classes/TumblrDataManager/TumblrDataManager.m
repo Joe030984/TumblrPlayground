@@ -28,6 +28,15 @@ NSString * const BlogNameUpdateNotification = @"BlogNameUpdateNotification";
     {
         [TMAPIClient sharedInstance].OAuthConsumerKey = @"dX4P8pl7xJz1lx9tgQXPVf2pJ0SKY6qDKo8hwtpFz6KcbO4lVt";
         [TMAPIClient sharedInstance].OAuthConsumerSecret = @"vCRKc77JXIpmHheZxAxQdBVAwXEhIVM7quhoDZdJIKDERs5Xt1";
+        
+        // Register to get updates for data saved to any other managed object context. This allows
+        // for background threads to use private MOCs to do work, rather than needing to jump back to
+        // the main thread to process the CoreData saves.
+        // It also allows merging changes on the main thread back to the private contexts.
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(processMergeNotification:)
+                                                     name:NSManagedObjectContextDidSaveNotification
+                                                   object:nil];
     }
     return self;
 }
@@ -78,7 +87,7 @@ NSString * const BlogNameUpdateNotification = @"BlogNameUpdateNotification";
     [[TumblrDataManager privateManagedObjectContext] performBlock:^(void) {
         [[TMAPIClient sharedInstance] posts:blogName
                                        type:nil
-                                 parameters:@{@"offset" : @(page)}
+                                 parameters:@{@"offset" : @(20 * page)}
                                    callback:^(NSDictionary *result, NSError *error) {
             if (error)
             {
@@ -100,6 +109,24 @@ NSString * const BlogNameUpdateNotification = @"BlogNameUpdateNotification";
                                                                 object:[TumblrDataManager class]
                                                               userInfo:@{@"providedName" : blogName,
                                                                          @"officialName" : result[@"blog"][@"name"]}];
+                                       
+            if (page == 0)
+            {
+                NSFetchRequest *deleteRequest = [NSFetchRequest fetchRequestWithEntityName:@"TumblrPost"];
+                deleteRequest.predicate = [NSPredicate predicateWithFormat:@"(blog_name == %@)", result[@"blog"][@"name"]];
+                deleteRequest.includesPropertyValues = NO; // Only fetch the NSManagedObjectIDs
+                NSError *error = nil;
+                NSArray *items = [context executeFetchRequest:deleteRequest error:&error];
+                if (error != nil)
+                {
+                    NSLog(@"An error occurred attempting to fetch TunblrPosts to delete: (%ld) %@",
+                          (long)error.code, error.localizedDescription);
+                }
+                for (NSManagedObject *object in items)
+                {
+                    [context deleteObject:object];
+                }
+            }
             
             // Gather a set of all post IDs to use for duplicate matching
             NSMutableDictionary *identifiers = [[NSMutableDictionary alloc] init];

@@ -29,7 +29,14 @@
     
     if (dictionary[@"player"] != nil && dictionary[@"player"] != [NSNull null] && [dictionary[@"player"] count] > 0)
     {
-        self.player = [dictionary[@"player"] lastObject][@"embed_code"];
+        if ([[dictionary[@"player"] lastObject][@"embed_code"] isKindOfClass:[NSString class]])
+        {
+            self.player = [dictionary[@"player"] lastObject][@"embed_code"];
+        }
+        else
+        {
+            self.player = nil;
+        }
     }
     else if (fullUpdate)
     {

@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 JoeSzymanski. All rights reserved.
 //
 
-@interface JRSViewController : UIViewController <UIAlertViewDelegate>
+#import <CoreData/NSFetchedResultsController.h>
+
+@interface JRSViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, UIAlertViewDelegate>
 
 @end

@@ -8,7 +8,6 @@
 
 #import "TumblrPost.h"
 
-
 @implementation TumblrPost
 
 @dynamic blog_name;
